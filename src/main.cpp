@@ -311,6 +311,7 @@ bool Manager::Init(PArgList &args)
     // Parse various command line arguments
     args.Parse(
             "u-user:"
+            "a-alias:"
             "c-password:"
             "l-localaddress:"
             "o-opallog:"
@@ -363,6 +364,10 @@ bool Manager::Init(PArgList &args)
         if (args.HasOption('u')) {
             sipep->SetDefaultLocalPartyName(args.GetOptionString('u'));
         }
+
+       if (args.HasOption('a')) {
+            sipep->SetDefaultDisplayName(args.GetOptionString('a'));
+       }
 
         if (args.HasOption('c')) {
             SIPRegister::Params param;

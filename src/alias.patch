@@ -1,0 +1,21 @@
+--- main.cpp    2015-02-01 15:46:56.708865742 +0100
++++ /mnt/usr/src/sipcmd-master/src/main.cpp     2014-11-26 21:26:19.762070877 +0100
+@@ -311,6 +311,7 @@
+     // Parse various command line arguments
+     args.Parse(
+             "u-user:"
++            "a-alias:"
+             "c-password:"
+             "l-localaddress:"
+             "o-opallog:"
+@@ -364,6 +365,10 @@
+             sipep->SetDefaultLocalPartyName(args.GetOptionString('u'));
+         }
+
++       if (args.HasOption('a')) {
++            sipep->SetDefaultDisplayName(args.GetOptionString('a'));
++       }
++
+         if (args.HasOption('c')) {
+             SIPRegister::Params param;
+             param.m_registrarAddress = args.GetOptionString('w');
